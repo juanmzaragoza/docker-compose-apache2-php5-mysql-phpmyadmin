@@ -1,0 +1,30 @@
+electronicmusic-web:
+  build: docker/
+  ports:
+    - 9991:80
+  volumes:
+    - ./public_html:/var/www/html
+  container_name: electronicmusic_web
+  links:
+    - electronicmusic-db:db
+
+electronicmusic-db:
+  image: mysql/mysql-server:5.5
+  container_name: electronicmusic_mysql
+  ports:
+    - 33991:3306
+  volumes:
+    - ./docker/mysql:/var/lib/mysql
+  environment:
+    - MYSQL_ROOT_PASSWORD=123456
+
+electronicmusic-pma:
+  image: phpmyadmin/phpmyadmin
+  ports:
+    - 32991:80
+  container_name: electronicmusic_phpmyadmin
+  links:
+    - electronicmusic-db:db
+  environment:
+    MYSQL_USERNAME: root
+    MYSQL_ROOT_PASSWORD: 123456
