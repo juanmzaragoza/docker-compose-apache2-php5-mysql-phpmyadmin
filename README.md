@@ -25,7 +25,7 @@ We need install the nexts dependencies:
 ### Distribution of directories
 
 The following directory structure fully describes the project
-
+```
 .
 +-- docker-compose.yml
 +-- docker
@@ -34,6 +34,7 @@ The following directory structure fully describes the project
 |   	+-- vhost.conf
 |   +-- Dockerfile
 +-- public_html
+```
 
 Inside docker/mysql will be stored the bases created by our project. Then DON'T DELETE IT.
 Inside docker/sites-enabled is the configuration of the server where we will install our project.
